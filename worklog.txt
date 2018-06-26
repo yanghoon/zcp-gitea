@@ -1,0 +1,15 @@
+## Download specific subdir
+## - https://coderwall.com/p/o2fasg/how-to-download-a-project-subdirectory-from-github
+
+## SVN Client for Windows
+## - https://stackoverflow.com/a/2341143
+## - https://sliksvn.com/download/
+
+## Download Commit
+##  charts/master          (Commits on Jun 26, 2018)
+##  - (Base)    https://github.com/kubernetes/charts/commit/d399a8c54891f6af0377d502bf46cc34dc9aae81
+##  charts/incubator/gogs  (Commits on Jun 2, 2018)
+##  - (history) https://github.com/kubernetes/charts/commits/master/incubator/gogs
+##  - (Latest)  https://github.com/kubernetes/charts/tree/1aede1787cc280f4b50518ed71fea92cecd64827/incubator/gogs
+
+svn export https://github.com/kubernetes/charts/trunk/incubator/gogs chargs-gogs
