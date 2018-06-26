@@ -7,7 +7,7 @@ metadata:
     component: {{ default "gogs" .Values.service.nameOverride }}
     heritage: "{{ .Release.Service }}"
     release: "{{ .Release.Name }}"
-  name: tcp-{{ template "gogs.gogs.fullname" . }}-ssh
+  name: {{ template "gogs.gogs.fullname" . }}-tcp-ssh
 data:
   2222: default/{{ template "gogs.fullname" . }}:ssh
 

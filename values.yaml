@@ -10,14 +10,14 @@ serviceType: NodePort
 replicaCount: 1
 
 image:
-  repository: gogs/gogs
-  tag: 0.11.29
+  repository: gitea/gitea
+  tag: 1.4
   pullPolicy: IfNotPresent
 
 service:
   ## Override the components name (defaults to service).
   ##
-  # nameOverride:
+  nameOverride: gitea
 
   ## HTTP listen port.
   ## ref: https://gogs.io/docs/advanced/configuration_cheat_sheet
@@ -41,7 +41,7 @@ service:
 
     ## Application name, can be your company or team name.
     ##
-    appName: 'Gogs'
+    appName: 'Gitea'
 
     ## Either "dev", "prod" or "test".
     ##
@@ -238,6 +238,8 @@ persistence:
   ##
   enabled: true
 
+  # existingClaim:
+
   ## gogs data Persistent Volume Storage Class
   ## If defined, storageClassName: <storageClass>
   ## If set to "-", storageClassName: "", which disables dynamic provisioning
@@ -266,16 +268,16 @@ postgresql:
 
   ### PostgreSQL User to create.
   ##
-  postgresUser: gogs
+  postgresUser: gitea
 
   ## PostgreSQL Password for the new user.
   ## If not set, a random 10 characters password will be used.
   ##
-  postgresPassword: gogs
+  postgresPassword: gitea
 
   ## PostgreSQL Database to create.
   ##
-  postgresDatabase: gogs
+  postgresDatabase: gitea
 
   ## Persistent Volume Storage configuration.
   ## ref: https://kubernetes.io/docs/user-guide/persistent-volumes
@@ -284,3 +286,4 @@ postgresql:
     ## Enable PostgreSQL persistence using Persistent Volume Claims.
     ##
     enabled: true
+    # existingClaim: 

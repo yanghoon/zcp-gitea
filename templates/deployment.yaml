@@ -43,6 +43,14 @@ spec:
             - name: config
               mountPath: /data/gogs/conf/app.ini
               subPath: app.ini
+      {{- if .Values.affinity }}
+      affinity:
+{{ toYaml .Values.affinity | indent 8 }}
+      {{- end }}
+      {{- if .Values.tolerations }}
+      tolerations:
+{{ toYaml .Values.tolerations | indent 8 }}
+      {{- end }}
       volumes:
         - name: config
           configMap:
@@ -50,7 +58,7 @@ spec:
         - name: data
       {{- if .Values.persistence.enabled }}
           persistentVolumeClaim:
-            claimName: {{ template "gogs.fullname" . }}
+            claimName:  {{ .Values.persistence.existingClaim | default (include "gogs.fullname" .) }}
       {{- else }}
           emptyDir: {}
       {{- end -}}
